@@ -24,20 +24,3 @@ void interpreter(const char *val) {
     }
 
 }
-
-
-int main() {
-    char command[100];
-
-    while (1) {
-        printf("Enter a command: ");
-        if (scanf("%s", command) == 1) {
-            interpreter(command);
-        } else {
-            printf("Invalid command input.\n");
-        }
-    }
-
-    return 0;
-}
-
