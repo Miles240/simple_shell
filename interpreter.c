@@ -1,9 +1,11 @@
+
 /*
  * simple_shell - function
 */
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -74,4 +76,3 @@ void simple_shell(void)
 
     free(buffer);
 }
-
