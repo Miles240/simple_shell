@@ -18,7 +18,7 @@ void simple_shell(void)
 {
     char *buffer = NULL;
     size_t bufsize = 0;
-    char *program_name = "./hsh";
+    char *program_name = "./shell";
 	pid_t child_pid;
 
     while (1)
