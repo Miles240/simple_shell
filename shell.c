@@ -1,4 +1,3 @@
-
 /*
  * simple_shell - function
 */
@@ -20,7 +19,11 @@ void simple_shell(void)
     size_t bufsize = 0;
     char *program_name = "./shell";
 	pid_t child_pid;
+char *token;
+                char *args[100];
 
+                int i = 0;
+                
     while (1)
     {
         write(STDOUT_FILENO, "#cisfun$ ", 9);
@@ -51,22 +54,23 @@ void simple_shell(void)
 
             if (child_pid == 0)
             {
-                char **args = malloc(2 * sizeof(char *));
-	if (args == NULL)
-	{
-    	perror("malloc");
-    	_exit(EXIT_FAILURE);
-	}
 
-	args[0] = buffer;
-	args[1] = NULL;
+                token = strtok(buffer, " ");
 
-                if (execve(buffer, args, NULL) == -1)
+                while (token != NULL)
                 {
-                    perror(program_name);
-                    _exit(EXIT_FAILURE);
+                    args[i++] = token;
+                    token = strtok(NULL, " ");
                 }
-            }
+
+                args[i] = NULL;
+
+                if (execvp(args[0], args) == -1)
+                {
+	perror(program_name);
+                    exit(EXIT_FAILURE);
+                }		
+                }
             else
             {
                 waitpid(child_pid, NULL, 0);
