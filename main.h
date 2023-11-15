@@ -1,6 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-void interpreter(const char *val);
+void run_shell(void);
 
 #endif
